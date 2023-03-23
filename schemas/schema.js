@@ -23,4 +23,12 @@ const updateFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
 });
 
-module.exports = {addSchema, updateFavoriteSchema};
+const registerSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string()
+      .pattern(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/)
+      .required(),
+  password: Joi.string().min(6).required(),
+});
+
+module.exports = {addSchema, updateFavoriteSchema, registerSchema};
