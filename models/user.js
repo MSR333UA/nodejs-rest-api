@@ -26,11 +26,14 @@ const userSchema = new Schema(
         type: String,
         default: null,
       },
+      role: {
+        type: String,
+        default: 'user',
+      },
     },
-
     {versionKey: false, timestamps: true},
 );
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;

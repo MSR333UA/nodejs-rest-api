@@ -1,15 +1,15 @@
-const path = require("path");
-const fs = require("fs/promises");
-const User = require("../models/user");
-const Jimp = require("jimp");
+const path = require('path');
+const fs = require('fs/promises');
+const User = require('../models/user');
+const Jimp = require('jimp');
 
-const avatarsDir = path.join(__dirname, "../", "public", "avatars");
+const avatarsDir = path.join(__dirname, '../', 'public', 'avatars');
 
 const avatars = async (req, res, next) => {
   try {
-    const { _id } = req.user;
-    const { path: tempDir, originalname } = req.file;
-    const [extension] = originalname.split(".").reverse();
+    const {_id} = req.user;
+    const {path: tempDir, originalname} = req.file;
+    const [extension] = originalname.split('.').reverse();
     const newFileName = `${_id}.${extension}`;
     const uploadDir = path.join(avatarsDir, newFileName);
 
@@ -19,8 +19,8 @@ const avatars = async (req, res, next) => {
 
     await fs.rename(tempDir, uploadDir);
 
-    const avatarURL = path.join("public", "avatars", newFileName);
-    await User.findByIdAndUpdate(_id, { avatarURL });
+    const avatarURL = path.join('public', 'avatars', newFileName);
+    await User.findByIdAndUpdate(_id, {avatarURL});
 
     // const newAvatar = {
     //   name: req.body.name,
@@ -39,4 +39,4 @@ const avatars = async (req, res, next) => {
   }
 };
 
-module.exports = { avatars };
+module.exports = {avatars};
