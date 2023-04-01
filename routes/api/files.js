@@ -15,8 +15,4 @@ router.patch(
     ctrlWrapper(filesController.avatars),
 );
 
-// router.get("/", async (req, res) => {
-//   res.json(avatars);
-// });
-
 module.exports = router;

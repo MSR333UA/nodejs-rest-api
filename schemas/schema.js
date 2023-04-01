@@ -30,5 +30,15 @@ const registerSchema = Joi.object({
       .required(),
   password: Joi.string().min(6).required(),
 });
+const resendVerificationSchema = Joi.object({
+  email: Joi.string()
+      .pattern(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/)
+      .required(),
+});
 
-module.exports = {addSchema, updateFavoriteSchema, registerSchema};
+module.exports = {
+  addSchema,
+  updateFavoriteSchema,
+  registerSchema,
+  resendVerificationSchema,
+};
