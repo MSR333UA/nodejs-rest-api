@@ -13,7 +13,7 @@ router.post(
     ctrlWrapper(authController.registration),
 );
 router.post('/login', ctrlWrapper(authController.login));
-
 router.get('/logout', auth, ctrlWrapper(authController.logout));
+
 
 module.exports = router;
